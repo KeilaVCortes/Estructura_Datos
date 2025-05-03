@@ -1,0 +1,174 @@
+//  CRUD
+// Create  Read  Update  Delete
+
+//Librería palabras reservadas de JAVA
+import java.util.*;
+//import java.util.ArrayList;
+//import java.util.Scanner;
+
+//Importar una libería de entrada-Salida
+import java.io.*;
+//import java.io.IOException;
+
+//Importar una libreria de funciones para trabajar con archivos
+// CRUD
+import java.nio.file.*;
+
+
+//Crear una clase del Archivo
+public class TextFileCRUD{
+    //Ruta del archivo
+    private static final FILE_PATH = "C:/itsao/ESTRUCTURA DE DATOS/programas/archivos/";//Ruta del archivo
+    //nombre del archivo
+    private static final NAME_FILE = "prueba.txt"; 
+}
+
+//CREATE
+//Crear archivo si NO EXISTE
+public static void createdFile() throws IOException{
+    Path path = Paths.get(FILE_PATH + NAME_FILE);
+    if (!Files.exists(path)) {
+        Files.createFile(path);
+        System.out.println("Archivo creado exitosamente.");
+    } else {
+        System.out.println("El archivo ya existe.");
+    }
+}
+
+// READ
+// Leer archivo
+public static void readFile() throws IOException {
+    Path path = Paths.get(FILE_PATH + NAME_FILE);
+    if (Files.exists(path)) {
+        ArrayList<String> lines = new ArrayList<>(Files.readAllLines(path));
+        for (String line : lines) {
+            System.out.println(line);
+        }
+    } else {
+        System.out.println("El archivo no existe.");
+    }
+}
+
+
+//UPDATE
+//Actualizar o modificar archivo
+public static void UpdateFile(int parrafo, String newLine) throws IOException{
+    Path path = Paths.get(FILE_PATH + NAME_FILE);
+    if (!Files.exists(path)) {
+        System.out.println("El archivo no existe.");
+        return;
+    }
+
+   //Copiar información de manera temporal
+    ArrayList<String> lines = new ArrayList<>(Files.readAllLines(path));
+    boolean updated = false;
+
+    //Copiar
+    for (int i = 0; i < lines.size(); i++) {
+        //verificar si está vacío o lleno el archivo
+        if (lines.get(i).startsWith(parrafo + ",")) {
+            lines.set(i, newLine);
+            updated = true;
+            break;
+        }
+    }
+  //Lleno
+    if (updated) {
+    //Soobreeescibir
+        Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
+        System.out.println("Archivo actualizado.");
+    } else {
+        System.out.println("No se encontró el párrafo especificado.");
+    }
+}
+
+//DELETE 
+//Eliminar una línea (información) archivo
+
+public static void deleteFromFlie(int parrafo) throws IOException{
+    Path path = Paths.get(FILE_PATH + NAME_FILE);
+        if (!Files.exists(path)) {
+            System.out.println("El archivo no existe.");
+            return;
+        }
+    
+    
+    ArrayList<String> lines = new ArrayList<>(Files.readAllLines(path));
+    boolean deleted = lines.removeIf(line -> line.startsWith(parrafo + ","));
+    
+    //en caso de estar vacío
+    if (deleted) {
+        Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
+        System.out.println("Línea eliminada.");
+    } else {
+        System.out.println("No se encontró el párrafo especificado.");
+    }
+}
+
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    int option;
+
+    do {
+         System.out.println("\n *-*-*- Menú -*-*-*");
+         System.out.println("1. Crear archivo");
+         System.out.println("2. Leer archivo");
+         System.out.println("3. Modificar archivo");
+         System.out.println("4. Eliminar línea del archivo");
+         System.out.println("5. Salir");
+         System.out.print("Seleccione una opción: ");
+         option = scanner.nextInt();
+         scanner.nextLine(); // Limpiar el buffer
+
+        try {
+            switch (option) {
+                case 1:
+                    createdFile();
+                    break;
+                case 2:
+                    readFile();
+                    break;
+                case 3:
+                    System.out.print("Ingrese el número de párrafo: ");
+                    int parrafo = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Ingrese el nuevo contenido: ");
+                    String newLine = scanner.nextLine();
+                    UpdateFile(parrafo, newLine);
+                    break;
+                case 4:
+                    System.out.print("Ingrese el número de párrafo a eliminar: ");
+                    int deleteParrafo = scanner.nextInt();
+                    deleteFromFlie(deleteParrafo);
+                    break;
+                case 5:
+                    System.out.println("Saliendo del programa.");
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+                    break;
+            }
+        } catch (IOException e) {
+            System.out.println("Error al procesar el archivo: " + e.getMessage());
+        }
+    } while (option != 5);
+
+    scanner.close();
+}
+
+
+
+
+
+
+
+///
+/// 
+/// //Crear archivo si NO EXISTE
+//public static void readFile() throws IOException{
+    //creando archivo
+   // ArrayList <String> lines = Files.readAllLines(FILE_PATH);
+    //Leer cada de unas líneas
+  //  for(String line:lines){ //variable dinámica line= índice de líneas
+    //  System.out.println(line);
+    //}

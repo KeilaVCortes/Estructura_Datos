@@ -1,0 +1,54 @@
+Crear un programa en java usando un arreglo  con los valores de [00,70,50,10,80,20,60,30,40,90], y se elimine el valor según su valor absoluto
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Crear el arreglo con los valores dados
+        int[] numeros = {00, 70, 50, 10, 80, 20, 60, 30, 40, 90};
+        Scanner sc = new Scanner(System.in);
+
+        // Mostrar los valores originales del arreglo
+        System.out.println("Valores originales en el arreglo:");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.println("Posición " + i + ": " + numeros[i]);
+        }
+
+        // Pedir al usuario el valor a eliminar (se usará el valor absoluto)
+        System.out.print("\nIntroduce el valor que deseas eliminar (se eliminará el valor absoluto): ");
+        int valorAEliminar = Math.abs(sc.nextInt());
+
+        // Contar cuántas veces aparece el valor a eliminar
+        int ocurrencias = 0;
+        for (int numero : numeros) {
+            if (Math.abs(numero) == valorAEliminar) {
+                ocurrencias++;
+            }
+        }
+
+        // Si no se encuentra el valor, mostrar un mensaje y terminar
+        if (ocurrencias == 0) {
+            System.out.println("El valor " + valorAEliminar + " no se encontró en el arreglo.");
+        } else {
+            // Crear un nuevo arreglo con el tamaño adecuado
+            int[] nuevoArreglo = new int[numeros.length - ocurrencias];
+
+            // Copiar los valores que no coincidan con el valor a eliminar
+            for (int i = 0, j = 0; i < numeros.length; i++) {
+                if (Math.abs(numeros[i]) != valorAEliminar) {
+                    nuevoArreglo[j++] = numeros[i];
+                }
+            }
+
+            // Mostrar los valores actualizados
+            System.out.println("\nValores en el arreglo después de eliminar el valor " + valorAEliminar + ":");
+            for (int numero : nuevoArreglo) {
+                System.out.println(numero);
+            }
+        }
+
+        sc.close();
+    }
+}

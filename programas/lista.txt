@@ -1,0 +1,56 @@
+import java.util.ArrayList;//Libería para trabajar con Listas y Arreglos
+import java.util.Scanner;
+
+public class Menu{
+    //Creación del arrayList en memoria
+    ArrayList <Double> ListaNumeros = new ListaNumeros;
+
+    public static void main(String[] args) {
+        //Pedir la opción al usuario
+        Scanner opcion = new Scanner(System.in);
+
+        //Desplegar el menú
+        System.out.println("* * * *  MENÚ  * * *");
+        System.out.println("[1] Agregar");
+        System.out.println("[2] Modificar");
+        System.out.println("[3] Eliminar");
+        System.out.println("[4] Insertar");
+        System.out.println("[5] Buscar elemento");
+        System.out.println("[6] Mostrar elemento");
+        System.out.println("[7] Salir");
+
+        //Pidiendo al usuario la opción
+        System.out.println("Opcion a elegir:");
+        teclado = opcion.nextInt();
+
+        //Ciclo de funciones
+        switch (opcion) {
+            case 1:
+                //agregar()
+                break;
+            case 2:
+                //modificar()
+                break;
+            case 3:
+                //eliminar()
+                break;
+            case 4:
+                //insertar()
+                break;
+            case 5:
+                //buscar()
+                break;
+            case 6:
+                //mostrar()
+                break;
+
+            default:
+                break;
+
+                //7
+        }
+
+
+    }
+    
+}

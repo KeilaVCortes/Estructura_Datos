@@ -1,0 +1,16 @@
+//Crear un programa en java usando un arreglo paralelos con los valores de puntaje =[00,70,50,10,80,20,60,30,40,90] y Jugador =[J1,J2,J3,J4,J5,J6,J7,J8,J9,J10], Y SE IMPRIMAN SU RELACIÓN
+
+public class JugadoresPuntajes {
+    public static void main(String[] args) {
+        // Arreglo de puntajes
+        int[] puntajes = {0, 70, 50, 10, 80, 20, 60, 30, 40, 90};
+        // Arreglo de jugadores
+        String[] jugadores = {"J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10"};
+
+        // Imprimir la relación entre jugador y puntaje
+        System.out.println("Jugador\tPuntaje");
+        for (int i = 0; i < jugadores.length; i++) {
+            System.out.println(jugadores[i] + "\t" + puntajes[i]);
+        }
+    }
+}

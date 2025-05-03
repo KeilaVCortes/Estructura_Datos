@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class ArregloEjemploFinal {
+    public static void main(String[] args) {
+        // Creamos un escáner para recibir entrada del usuario
+        Scanner scanner = new Scanner(System.in);
+        
+        // Creamos un arreglo con un tamaño de 10 para almacenar los números
+        int[] numeros = new int[10];
+        
+        // Solicitamos 10 números y los agregamos al final del arreglo
+        System.out.println("Por favor, ingrese 10 números:");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Número " + (i + 1) + ": ");
+            numeros[i] = scanner.nextInt(); // Guardamos cada número en el arreglo en orden
+        }
+        
+        // Mostramos los números ingresados (en el orden en que se introdujeron)
+        System.out.println("\nLos números ingresados son:");
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Número " + (i + 1) + ": " + numeros[i]);
+        }
+        
+        // Cerramos el escáner
+        scanner.close();
+    }
+}
+
+
+
+Los sistemas térmicos en equipo informático se refieren a los mecanismos y tecnologías que se utilizan para controlar la temperatura de los componentes de hardware, como procesadores, tarjetas gráficas, discos duros y fuentes de alimentación. La gestión del calor es fundamental para evitar sobrecalentamientos que pueden reducir el rendimiento, dañar componentes o disminuir la vida útil del equipo.
+
+
+
+podrías darme un resumen del tema Sistemas térmicos en equipo informático, y su relación con los Tipos de sistemas y medición del calor. 
+
+Un socket es la conexión que se establece entre dos aplicaciones en dos hosts diferentes, una aplicación cliente en un host y otra aplicación servidor en otro (siguiendo la arquitectura cliente-servidor) a través de una red (LAN, WAN, . . .)

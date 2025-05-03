@@ -1,0 +1,29 @@
+Crear un programa en java usando un arreglo con los valores de [00,70,50,10,80,20,60,30,40,90], y se cambie el valor según su valor absoluto
+
+
+public class Main {
+    public static void main(String[] args) {
+        // Crear el arreglo con los valores dados
+        int[] numeros = {00, 70, 50, 10, 80, 20, 60, 30, 40, 90};
+        
+        // Mostrar los valores originales del arreglo
+        System.out.println("Valores originales en el arreglo:");
+        for (int numero : numeros) {
+            System.out.println(numero);
+        }
+
+        // Modificar el arreglo usando el valor absoluto (en este caso es innecesario ya que todos son positivos)
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = Math.abs(numeros[i]);
+        }
+
+        // Mostrar los valores actualizados del arreglo
+        System.out.println("\nValores actualizados (valor absoluto) en el arreglo:");
+        for (int numero : numeros) {
+            System.out.println(numero);
+        }
+    }
+}
+
+
+

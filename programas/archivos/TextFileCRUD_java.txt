@@ -1,0 +1,87 @@
+// CRUD
+
+// Importar librerías necesarias
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TextFileCRUD {
+    // Ruta del archivo y nombre del archivo
+    private static final String FILE_PATH = "C:/itsao/ESTRUCTURA DE DATOS/programas/archivos/";
+    private static final String NAME_FILE = "prueba.txt";
+
+    // Método para leer un archivo
+    public static void readFile() throws IOException {
+        Path path = Paths.get(FILE_PATH + NAME_FILE);
+        if (Files.exists(path)) {
+            List<String> lines = Files.readAllLines(path); // Leer todas las líneas
+            for (String line : lines) {
+                System.out.println(line);
+            }
+        } else {
+            System.out.println("El archivo no existe.");
+        }
+    }
+
+    // Método para actualizar/modificar una línea específica en el archivo
+    public static void updateFile(int lineNumber, String newLine) throws IOException {
+        Path path = Paths.get(FILE_PATH + NAME_FILE);
+        if (Files.exists(path)) {
+            List<String> lines = new ArrayList<>(Files.readAllLines(path));
+            if (lineNumber > 0 && lineNumber <= lines.size()) {
+                lines.set(lineNumber - 1, newLine); // Actualizar línea específica
+                Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
+                System.out.println("Línea actualizada exitosamente.");
+            } else {
+                System.out.println("El número de línea es inválido.");
+            }
+        } else {
+            System.out.println("El archivo no existe.");
+        }
+    }
+
+    // Método para eliminar una línea específica del archivo
+    public static void deleteFromFile(int lineNumber) throws IOException {
+        Path path = Paths.get(FILE_PATH + NAME_FILE);
+        if (Files.exists(path)) {
+            List<String> lines = new ArrayList<>(Files.readAllLines(path));
+            if (lineNumber > 0 && lineNumber <= lines.size()) {
+                lines.remove(lineNumber - 1); // Eliminar línea específica
+                Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
+                System.out.println("Línea eliminada exitosamente.");
+            } else {
+                System.out.println("El número de línea es inválido.");
+            }
+        } else {
+            System.out.println("El archivo no existe.");
+        }
+    }
+
+    // Método principal
+    public static void main(String[] args) {
+        try {
+            // Leer contenido del archivo
+            System.out.println("Contenido inicial del archivo:");
+            readFile();
+
+            // Actualizar línea en el archivo
+            System.out.println("\nActualizando línea 1:");
+            updateFile(1, "Femenino, Informática");
+
+            // Leer contenido del archivo nuevamente
+            System.out.println("\nContenido del archivo después de actualizar:");
+            readFile();
+
+            // Eliminar una línea del archivo
+            System.out.println("\nEliminando línea 1:");
+            deleteFromFile(1);
+
+            // Leer contenido del archivo nuevamente
+            System.out.println("\nContenido del archivo después de eliminar:");
+            readFile();
+        } catch (IOException e) {
+            System.err.println("Se produjo un error: " + e.getMessage());
+        }
+    }
+}

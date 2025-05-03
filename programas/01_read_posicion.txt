@@ -1,0 +1,33 @@
+//Crear un programa en java usando un arreglo con los valores de [00,70,50,10,80,20,60,30,40,90], en el que se lean los 10 números enteros y se cambie el valor según su posición.
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Crear el arreglo con los valores iniciales
+        int[] numeros = {00, 70, 50, 10, 80, 20, 60, 30, 40, 90};
+        Scanner sc = new Scanner(System.in);
+        
+        // Mostrar los valores actuales del arreglo
+        System.out.println("Valores actuales en el arreglo:");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.println("Posición " + i + ": " + numeros[i]);
+        }
+        
+        // Solicitar al usuario nuevos valores para cada posición
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print("Introduce un nuevo valor para la posición " + i + ": ");
+            numeros[i] = sc.nextInt();
+        }
+
+        // Mostrar los valores actualizados del arreglo
+        System.out.println("\nValores actualizados en el arreglo:");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.println("Posición " + i + ": " + numeros[i]);
+        }
+        
+        sc.close();
+    }
+}
+
